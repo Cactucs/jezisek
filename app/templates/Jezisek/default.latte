@@ -1,0 +1,45 @@
+
+{block content}
+	<div>
+		<h2>Přání blízkých</h2>
+
+		<div class="panel-group" id="accordion">
+			{foreach $gifts as $user => $usersGifts}
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#{$user|webalize}" data-target="#{$user|webalize}">
+								{$user} 
+								<span class="badge">{$usersGifts|count} přání</span>
+							</a>
+						</h4>
+					</div>
+					<ul class="list-group panel-collapse collapse user-coll" id="{$user|webalize}">
+						{foreach $usersGifts as $gift}
+							<li class="list-group-item"><a class="texty" data-toggle="collapse" data-target="#gift-more-{$gift[id]}">{$gift[name]}
+							<ul class="list-group collapse gift-description-list" id="gift-more-{$gift[id]}">
+								<li class="list-group-item" n:if="$gift[description]">{$gift[description]|escape|linklinks|noescape}</li>
+								<li class="list-group-item" n:if="$gift[plurality]">Může být více</li>
+								<li class="list-group-item" n:if="$gift[isGiven]">{$gift[isGiven] ? 'Už ho někdo dává' : 'Můžeš ho dát'}</li>
+								<li class="list-group-item" n:if="!$gift[isGiven]"><a n:href="jezisek:addGive $gift[id]">Chci splnit!</a></li>
+							</ul></li>
+						{/foreach}
+					</ul>
+				
+					{* OLD<ul id="{$user|webalize}" class="collapse">
+						{foreach $usersGifts as $gift}
+							<li>{$gift[name]}</li>
+							<ul>
+								<li>{$gift[description]}</li>
+								<li>{$gift[plurality] ? Více : Jeden}</li>
+								<li n:if="$gift[isGiven]">{$gift[isGiven] ? 'Už ho někdo dává' : 'Můžeš ho dát'}</li>
+								<li n:if="!$gift[isGiven]"><a n:href="jezisek:addGive $gift[id]">Chci splnit!</a></li>
+							</ul>
+						{/foreach}
+					</ul>*}
+				</div>
+			{/foreach}
+		<ul>
+	</div>
+
+{/block}

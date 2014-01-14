@@ -1,0 +1,57 @@
+{form $form}
+<ul class=error n:if="$form->ownErrors">
+	<li n:foreach="$form->ownErrors as $error">{$error}</li>
+</ul>
+
+<table>
+<tr n:foreach="$form->controls as $input" n:class="$input->required ? required">
+	<th>{label $input /}</th>
+	<td>
+		<div class="input-group">
+			{input $input class => form-control}
+			
+		</div>
+		<span class=error n:ifcontent>{$input->error}</span>
+	</td>
+</tr>
+</table>
+{/form}
+
+{*
+{form $form}
+
+<table>
+<tr n:foreach="$form->controls as $input" n:class="$input->required ? required">
+	<th>{label $input /}</th>
+	<td>{input $input} <span class=error n:ifcontent>{$input->error}</span></td>
+</tr>
+</table>
+
+	<ul class=error n:if="$form->ownErrors">
+		<li n:foreach="$form->ownErrors as $error">{$error}</li>
+	</ul>
+
+	<div class="input-group" n:foreach="$form->controls as $input">
+	{dump $input}
+	<?php 
+		$tagName = 'input';
+		$type = '';
+		$closing = false;
+		if(get_class($input) == "Nette\Forms\Controls\TextInput") $type = 'text';
+		if(get_class($input) == "Nette\Forms\Controls\Checkbox") $type = 'text';
+		if(get_class($input) == "Nette\Forms\Controls\SubmitButton") $type = 'submit';
+		if(get_class($input) == "Nette\Forms\Controls\Button") $type = 'button';
+		if(get_class($input) == "Nette\Forms\Controls\HiddenField") $type = 'hidden';
+		if(get_class($input) == "Nette\Forms\Controls\TextArea") {$tagName = 'textArea'; $closing = true;}
+		if ($type == '' && $tagName == 'input') throw new Exception("This input type is not yet implemented.");
+		
+		
+	?>
+		<span class="input-group-addon">{$input->caption}</span>
+		<{$tagName} type="{$type}" class="form-control"> <?php if($closing) echo '</'.$tagName.'>';?>
+	</div>
+
+
+{/form}
+
+*}

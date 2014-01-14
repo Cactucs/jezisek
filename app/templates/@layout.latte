@@ -1,0 +1,63 @@
+{**
+ * My Application layout template.
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
+
+	<title>{block title|striptags|upper}Ježíšek{/block}</title>
+
+	<link rel="stylesheet" href="{$basePath}/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{$basePath}/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="{$basePath}/css/style.css"> 
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	{block head}{/block}
+	<script src="{$basePath}/js/jquery.js"></script>
+	<script src="{$basePath}/js/netteForms.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	<script src="{$basePath}/bootstrap/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/">Ježíšek</a>
+	  </div>
+		<div class="collapse navbar-collapse">
+		  <ul class="nav navbar-nav">
+
+		  </ul>
+		</div><!--/.nav-collapse -->
+	  </div>
+	</nav>
+
+	{include 'components/flashes.latte'}
+
+	<div id="content">
+
+		{block content}
+
+	</div>
+
+
+
+</body>
+</html>

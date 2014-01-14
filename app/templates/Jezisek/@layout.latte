@@ -1,0 +1,75 @@
+{**
+ * My Application layout template.
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
+
+	<title>{block title|striptags|upper}Ježíšek{/block}</title>
+
+	<link rel="stylesheet" href="{$basePath}/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{$basePath}/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="{$basePath}/css/style.css"> 
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	{block head}{/block}
+
+	<script src="{$basePath}/js/jquery.js"></script>
+	<script src="{$basePath}/js/netteForms.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	<script src="{$basePath}/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsable">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/"><span class="glyphicon glyphicon-gift"></span>   Ježíšek</a>
+	  </div>
+		<div class="collapse navbar-collapse" id="navbar-collapsable">
+		  <ul class="nav navbar-nav">
+		  	<li><a n:href="jezisek:default">Přání jiných</a></li>
+		  	<li><a n:href="jezisek:myGifts">Moje přání</a></li>
+		  	<li><a n:href="jezisek:gives">Dávám</a></li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+		  	{ifset $jezisek}
+				<p class="navbar-text" n:if="$jezisek != 'nikdo'">Jsi ježíšek pro {$jezisek}</p>
+				<p class="navbar-text" n:if="$jezisek == 'nikdo'">Ještě nejsi ježíškem.</p>
+		  	{/ifset}
+		  	<li><a n:href="settings:">Nastavení</a></li>
+		  	<li><a n:href="sign:out">Odhlásit se</a></li>
+		  </ul>
+		</div><!--/.nav-collapse -->
+	  </div>
+	</nav>
+
+	
+	{include '../components/flashes.latte'}
+
+
+
+	<div id="content">
+
+		{block content}
+
+	</div>
+
+
+
+</body>
+</html>

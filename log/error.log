@@ -1,0 +1,1 @@
+[2013-12-30 15-00-07] Fatal error: Call to a member function getGifts() on a non-object in /var/www/jezisek/nette/app/presenters/JezisekPresenter.php:35  @  http://localhost:8003/settings/  @@  exception-2013-12-30-15-00-07-caeff7b5a721016b2cabd2b02de4ac59.html

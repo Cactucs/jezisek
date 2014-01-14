@@ -1,0 +1,14 @@
+{block content}
+	<div>
+		<h2>Plním přání:</h2>
+		<ul>
+			{foreach $gives as $gift}
+				<li>{$gift[user]}: {$gift[name]}</li>
+				<ul>
+					<li n:if="$gift[description]">{$gift[description]|escape|linklinks|noescape}</li>
+					<li n:if="$gift[plurality]">{$gift[plurality] ? 'Možno více'}</li>
+					<li><a n:href="jezisek:deleteGive $gift[id]">Nesplním!</a></li>
+				</ul>
+			{/foreach}
+		</ul>
+	</div>

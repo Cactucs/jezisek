@@ -1,0 +1,31 @@
+{block content}
+	<div>
+		<h2>Moje přání</h2>
+		<p><a n:href="jezisek:addGift" class="texty"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>   Přidat přání</button></a></p>
+	
+			{foreach $myGifts as $gift}
+			<div class="panel panel-default">
+				<div class="panel-heading"><h3 class="panel-title">{$gift[name]}</h3>
+				</div>
+				<div class="panel-body">
+						<div class="btn-group pull-right">
+							<button type="button" class="btn btn-default">
+								<a n:href="jezisek:editGift $gift[id]" class="texty">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+							</button>
+							<button type="button" class="btn btn-default">
+								<a n:href="jezisek:deleteGift $gift[id]" class="texty">
+									<span class="glyphicon glyphicon-trash"></span>
+								</a>
+							</button>
+						</div>
+					<ul>
+						<li n:if="$gift[description]">{$gift[description]|escape|linklinks|noescape}</li>
+						<li>{$gift[plurality] ? 'Možno více' : 'Jeden'}</li>
+					</ul>
+
+				</div>
+			</div>
+			{/foreach}
+	</div>

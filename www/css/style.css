@@ -1,0 +1,44 @@
+#sign-in-block {
+    margin: auto;
+    text-align: center;
+    max-width: 400px;
+    border: solid 1px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#sign-in-block th {
+	text-align: right;
+}
+
+#sign-in-block tr {
+	padding-top: 20px;
+}
+
+.alert {
+	text-align: center;
+	min-width: 20vw;
+	max-width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.texty {
+	color: #000;
+	text-decoration: none;
+}
+
+.texty:hover {
+	color: #000;
+	text-decoration: none;
+}
+
+#content {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.gift-description-list {
+	border: 1px solid rgba(85, 85, 85, 0.2);
+	margin-top: 5px;
+}
